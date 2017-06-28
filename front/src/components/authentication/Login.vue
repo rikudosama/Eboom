@@ -37,7 +37,7 @@ export default {
                 password: this.password
             }
 
-            this.$http.post("http://localhost:8000/oauth/token", data)
+            this.$http.post("oauth/token", data)
               .then(response => {
                 this.$auth.setToken(response.body.access_token, response.body.expires_in + Date.now())
                 this.$router.push("/feed")
