@@ -1,6 +1,7 @@
 <template>
 	<div class="row">
-		<my-product v-for="product in products" :product="product"></my-product>
+		<my-product v-for="product in products" :product="product" :authenticatedUser="authenticatedUser">
+		</my-product>
 	</div>
 </template>
 <script>
@@ -9,6 +10,11 @@
 		data() {
 			return {
 				products: []
+			}
+		},
+		computed: {
+			authenticatedUser() {
+				return this.$auth.getAuthenticatedUser()
 			}
 		},
 		components: {
