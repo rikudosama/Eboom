@@ -26,6 +26,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
 
     return [
+        'user_id'=> App\user::all()->random()->id,
         'name' => $faker->word,
         'price' => $faker->randomFloat(2, 1, 100),
         'description' => $faker->paragraph(random_int(1, 10))
