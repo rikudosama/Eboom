@@ -23,6 +23,7 @@
 		created() {
 			this.$http.get('api/products')
 			.then(response => {
+				console.log(response)
 				this.products = response.body
 			})
 		}

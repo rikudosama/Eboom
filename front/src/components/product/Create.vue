@@ -9,7 +9,7 @@
 					</div>
 					<div class="form-group">
 						<label for="price">Price:</label>
-						<input type="text" name="price" class="form-control" v-model="product.price">
+						<input type="number" name="price" class="form-control" v-model="product.price">
 					</div>
 					<div class="form-group">
 						<label for="description">description:</label>

@@ -36,7 +36,7 @@ export default {
       this.$http.get('api/user')
           .then(response => {
             this.$auth.setAuthenticatedUser(response.body)
-            console.log(getAuthenticatedUser())
+            console.log(this.$auth.getAuthenticatedUser())
           })
     }
   }
