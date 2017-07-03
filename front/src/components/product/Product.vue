@@ -41,9 +41,15 @@
 					confirmButtonText: "yes, delete it !",
 					closeOnConfirm: false
 				},
+
 				function() {
-					swal("Deleted", "your product has been deleted", "success")
-				});
+					this.$http.delete('api/products/' + this.product.id)
+					    .then(response => {
+					    	console.log(response)
+					    	swal("Deleted", "your product has been deleted", "success")
+					    })
+				}.bind(this)
+				);
 			}
 		}
 	}
