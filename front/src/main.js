@@ -9,6 +9,14 @@ Vue.use(Auth)
 
 Vue.http.options.root = 'http://localhost:8000'
 Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken()
+Vue.http.interceptors.push((request, next) => {
+	next(response => {
+		if(response.status == 404)
+			swal(response.status.toString(), response.body.error, "error")
+		else if(response.status == 500)
+			swal(response.status.toString(), "We are expiriencing an error in the our server", "error")
+	})
+})
 
 Router.beforeEach(
 	(to, from, next) => {
@@ -30,7 +38,7 @@ Router.beforeEach(
 )
 
 new Vue({
-  el: '#app',
-  render: h => h(App),
-  router: Router
+	el: '#app',
+	render: h => h(App),
+	router: Router
 })
