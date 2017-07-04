@@ -5,6 +5,10 @@
 				<div class="panel-body">
 					<form @submit.prevent="create">
 						<div class="form-group">
+							<label for="image">Image:</label>
+							<input type="file" @change="imageChanged" class="form-control">
+						</div>
+						<div class="form-group">
 							<label for="name">Name:</label>
 							<input type="text" name="name" v-validate="'required'" class="form-control" v-model="product.name">
 							<div class="help-block alert alert-danger"
@@ -42,11 +46,22 @@
 				product: {
 					name: '',
 					price: 0,
-					description: ''
+					description: '',
+					image: ''
 				}
 			}
 		},
 		methods: {
+			imageChanged(e) {
+				console.log(e.target.files[0])
+				var fileReader = new FileReader()
+
+				fileReader.readAsDataURL(e.target.files[0])
+
+				fileReader.onload = (e) => {
+					this.product.image =  e.target.result
+				}
+			},
 			create() {
 				this.$validator.updateDictionary({
 					'fr': {

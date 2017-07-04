@@ -2,7 +2,7 @@
 	<div>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Hermes-product-image.png" alt="">
+				<img :src="'http://localhost:8000/' + product.image">
 				<div class="caption">
 					{{ product.user_id }}
 					<h3>{{ product.name }}</h3>
