@@ -3,9 +3,11 @@ import App from './App.vue'
 import Router from './routes.js'
 import VueResource from 'vue-resource'
 import Auth from './packages/auth/Auth.js'
+import VeeValidate from 'vee-validate'
 
 Vue.use(VueResource)
 Vue.use(Auth)
+Vue.use(VeeValidate)
 
 Vue.http.options.root = 'http://localhost:8000'
 Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken()
